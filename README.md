@@ -165,4 +165,4 @@ docker compose down
 | Docker Compose | v2 | Orquestación local |
 | GitHub Actions | — | CI/CD automatizado |
 | Snyk | — | Análisis de seguridad de dependencias |
-| Dependabot | — | Monitoreo automático de vulnerabilidades |
+| Dependabot | — | Monitoreo automático de vulnerabilidades | 
