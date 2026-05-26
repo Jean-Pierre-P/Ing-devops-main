@@ -1,0 +1,476 @@
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>
+DevOps Continuous Feedback
+</title>
+
+<style>
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 40px;
+  background: #f5f5f5;
+  color: #222;
+}
+
+h1, h2, h3 {
+  color: #111;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background: white;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background: #222;
+  color: white;
+}
+
+code {
+  background: #eee;
+  padding: 2px 4px;
+}
+
+pre {
+  background: #eee;
+  padding: 15px;
+  overflow-x: auto;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>DEVOPS CONTINUOUS FEEDBACK</h1>
+<h2>Resumen ejecutivo</h2>
+<p>Las siguientes mejoras ayudarán a incrementar la madurez DevOps del repositorio.</p>
+<h3>🔴 Alta prioridad</h3>
+<ul>
+<li>Docker build funciona</li>
+</ul>
+<h3>🟠 Prioridad media</h3>
+<ul>
+<li>Coverage equivalente JaCoCo</li>
+</ul>
+<hr>
+<h2>Roadmap sugerido para alcanzar el 100%</h2>
+<ol>
+<li>Docker build funciona</li>
+<li>Coverage equivalente JaCoCo</li>
+<li>Docker Compose/K8s</li>
+</ol>
+<hr>
+<h2>Cómo resolver los GAPs</h2>
+<h3>Docker build funciona</h3>
+<p>Impacto: El contenedor no puede construirse correctamente.</p>
+<h4>Cómo resolver</h4>
+<ul>
+<li>Validar sintaxis Dockerfile</li>
+<li>Ejecutar docker build localmente</li>
+<li>Revisar COPY y CMD</li>
+</ul>
+<h4>Ejemplo</h4>
+<pre><code>
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+CMD [&quot;npm&quot;,&quot;start&quot;]
+</code></pre>
+<h3>Coverage equivalente JaCoCo</h3>
+<p>Impacto: No existe medición de cobertura.</p>
+<h4>Cómo resolver</h4>
+<ul>
+<li>Agregar coverage</li>
+<li>Publicar cobertura pipeline</li>
+</ul>
+<h4>Ejemplo</h4>
+<pre><code>
+npm test -- --coverage
+</code></pre>
+<hr>
+<h2>Tabla evaluación</h2>
+<table>
+<thead>
+<tr>
+<th>IE</th>
+<th>Qué se revisará</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IE1</td>
+<td>Dockerfile existe</td>
+</tr>
+<tr>
+<td>IE1</td>
+<td>Docker build funciona</td>
+</tr>
+<tr>
+<td>IE1</td>
+<td>Imágenes optimizadas</td>
+</tr>
+<tr>
+<td>IE1</td>
+<td>Multi-stage build</td>
+</tr>
+<tr>
+<td>IE2</td>
+<td>Existen tests</td>
+</tr>
+<tr>
+<td>IE2</td>
+<td>Pipeline ejecuta tests</td>
+</tr>
+<tr>
+<td>IE2</td>
+<td>Coverage equivalente JaCoCo</td>
+</tr>
+<tr>
+<td>IE3</td>
+<td>Dependabot configurado</td>
+</tr>
+<tr>
+<td>IE3</td>
+<td>SonarCloud/Snyk</td>
+</tr>
+<tr>
+<td>IE3</td>
+<td>Bloqueos seguridad needs</td>
+</tr>
+<tr>
+<td>IE3</td>
+<td>Limits CPU/MEM</td>
+</tr>
+<tr>
+<td>IE3</td>
+<td>Reservations CPU/MEM</td>
+</tr>
+<tr>
+<td>IE4</td>
+<td>Deploy automático</td>
+</tr>
+<tr>
+<td>IE4</td>
+<td>README documentado</td>
+</tr>
+<tr>
+<td>IE5</td>
+<td>Docker Compose/K8s</td>
+</tr>
+<tr>
+<td>IE5</td>
+<td>Múltiples servicios</td>
+</tr>
+<tr>
+<td>IE5</td>
+<td>Healthchecks</td>
+</tr>
+<tr>
+<td>IE5</td>
+<td>Volumes</td>
+</tr>
+<tr>
+<td>IE5</td>
+<td>Networks</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Resultado revisión</h2>
+<table>
+<thead>
+<tr>
+<th>IE</th>
+<th>Evaluación</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IE1</td>
+<td>Dockerfile existe</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE1</td>
+<td>Multi-stage build</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE1</td>
+<td>Imágenes optimizadas</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE1</td>
+<td>Docker build funciona</td>
+<td>⚠️ MEJORA PENDIENTE</td>
+</tr>
+<tr>
+<td>IE4</td>
+<td>Pipeline GitHub Actions</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE2</td>
+<td>Pipeline ejecuta tests</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE3</td>
+<td>SonarCloud/Snyk</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE3</td>
+<td>Bloqueos seguridad needs</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE4</td>
+<td>Deploy automático</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE2</td>
+<td>Tecnología detectada</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE2</td>
+<td>Coverage equivalente JaCoCo</td>
+<td>⚠️ MEJORA PENDIENTE</td>
+</tr>
+<tr>
+<td>IE3</td>
+<td>Dependabot configurado</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE5</td>
+<td>Docker Compose/K8s</td>
+<td>⚠️ MEJORA PENDIENTE</td>
+</tr>
+<tr>
+<td>IE4</td>
+<td>README documentado</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Detalle validaciones</h2>
+<h3>IE1 - Dockerfile existe</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: Dockerfile encontrado</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>Dockerfile
+</code></pre>
+<h3>IE1 - Multi-stage build</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: Usa multi-stage</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>Dockerfile revisado
+</code></pre>
+<h3>IE1 - Imágenes optimizadas</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: Usa imágenes optimizadas</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>Dockerfile revisado
+</code></pre>
+<h3>IE1 - Docker build funciona</h3>
+<ul>
+<li><p>Estado: ⚠️ MEJORA PENDIENTE</p>
+</li>
+<li><p>Detalle: Docker build falló</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>#0 building with &quot;default&quot; instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 377B done
+#1 DONE 0.0s
+
+#2 [auth] library/python:pull token for registry-1.docker.io
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.11-slim
+#3 DONE 0.4s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 7.07MB 0.1s done
+#5 DONE 0.1s
+
+#6 [builder 1/
+</code></pre>
+<ul>
+<li>Qué falta: Corregir Docker build</li>
+</ul>
+<h3>IE4 - Pipeline GitHub Actions</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: 2 workflow(s) detectados</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>/home/runner/work/Ing-devops-main/Ing-devops-main/.github/workflows/ep02-devops-continuous-feedback.yml.yml, /home/runner/work/Ing-devops-main/Ing-devops-main/.github/workflows/ci-cd.yml
+</code></pre>
+<h3>IE2 - Pipeline ejecuta tests</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: Ejecuta tests</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>Workflow revisado
+</code></pre>
+<h3>IE3 - SonarCloud/Snyk</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: Tiene seguridad</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>Workflow revisado
+</code></pre>
+<h3>IE3 - Bloqueos seguridad needs</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: Usa needs</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>Workflow revisado
+</code></pre>
+<h3>IE4 - Deploy automático</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: Tiene deploy</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>Workflow revisado
+</code></pre>
+<h3>IE2 - Tecnología detectada</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: node</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>Archivos proyecto
+</code></pre>
+<h3>IE2 - Coverage equivalente JaCoCo</h3>
+<ul>
+<li><p>Estado: ⚠️ MEJORA PENDIENTE</p>
+</li>
+<li><p>Detalle: Coverage NO detectado para node</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>
+Tecnología: node
+
+Coverage esperado:
+Jest Coverage / NYC
+
+Keywords:
+--coverage, collectCoverage, coverageThreshold, nyc, istanbul, jest
+      
+</code></pre>
+<ul>
+<li>Qué falta: Agregar Jest Coverage / NYC</li>
+</ul>
+<h3>IE3 - Dependabot configurado</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: Dependabot encontrado</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>.github/dependabot.yml
+</code></pre>
+<h3>IE5 - Docker Compose/K8s</h3>
+<ul>
+<li><p>Estado: ⚠️ MEJORA PENDIENTE</p>
+</li>
+<li><p>Detalle: No existe docker-compose</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>docker-compose.yml
+</code></pre>
+<ul>
+<li>Qué falta: Agregar docker-compose</li>
+</ul>
+<h3>IE4 - README documentado</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: README encontrado</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>README.md
+</code></pre>
+
+
+</body>
+
+</html>
