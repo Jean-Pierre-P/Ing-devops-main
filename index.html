@@ -59,10 +59,6 @@ pre {
 <h1>DEVOPS CONTINUOUS FEEDBACK</h1>
 <h2>Resumen ejecutivo</h2>
 <p>Las siguientes mejoras ayudarán a incrementar la madurez DevOps del repositorio.</p>
-<h3>🔴 Alta prioridad</h3>
-<ul>
-<li>Docker build funciona</li>
-</ul>
 <h3>🟠 Prioridad media</h3>
 <ul>
 <li>Coverage equivalente JaCoCo</li>
@@ -70,34 +66,10 @@ pre {
 <hr>
 <h2>Roadmap sugerido para alcanzar el 100%</h2>
 <ol>
-<li>Docker build funciona</li>
 <li>Coverage equivalente JaCoCo</li>
-<li>Docker Compose/K8s</li>
 </ol>
 <hr>
 <h2>Cómo resolver los GAPs</h2>
-<h3>Docker build funciona</h3>
-<p>Impacto: El contenedor no puede construirse correctamente.</p>
-<h4>Cómo resolver</h4>
-<ul>
-<li>Validar sintaxis Dockerfile</li>
-<li>Ejecutar docker build localmente</li>
-<li>Revisar COPY y CMD</li>
-</ul>
-<h4>Ejemplo</h4>
-<pre><code>
-FROM node:20-alpine
-
-WORKDIR /app
-
-COPY package*.json ./
-
-RUN npm install
-
-COPY . .
-
-CMD [&quot;npm&quot;,&quot;start&quot;]
-</code></pre>
 <h3>Coverage equivalente JaCoCo</h3>
 <p>Impacto: No existe medición de cobertura.</p>
 <h4>Cómo resolver</h4>
@@ -223,7 +195,7 @@ npm test -- --coverage
 <tr>
 <td>IE1</td>
 <td>Docker build funciona</td>
-<td>⚠️ MEJORA PENDIENTE</td>
+<td>✅ IMPLEMENTADO</td>
 </tr>
 <tr>
 <td>IE4</td>
@@ -268,7 +240,37 @@ npm test -- --coverage
 <tr>
 <td>IE5</td>
 <td>Docker Compose/K8s</td>
-<td>⚠️ MEJORA PENDIENTE</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE5</td>
+<td>Múltiples servicios</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE5</td>
+<td>Healthchecks</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE5</td>
+<td>Volumes</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE5</td>
+<td>Networks</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE3</td>
+<td>Limits CPU/MEM</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE3</td>
+<td>Reservations CPU/MEM</td>
+<td>✅ IMPLEMENTADO</td>
 </tr>
 <tr>
 <td>IE4</td>
@@ -313,38 +315,15 @@ npm test -- --coverage
 </code></pre>
 <h3>IE1 - Docker build funciona</h3>
 <ul>
-<li><p>Estado: ⚠️ MEJORA PENDIENTE</p>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
 </li>
-<li><p>Detalle: Docker build falló</p>
+<li><p>Detalle: Docker build exitoso</p>
 </li>
 <li><p>Evidencia:</p>
 </li>
 </ul>
-<pre><code>#0 building with &quot;default&quot; instance using docker driver
-
-#1 [internal] load build definition from Dockerfile
-#1 transferring dockerfile: 377B done
-#1 DONE 0.0s
-
-#2 [auth] library/python:pull token for registry-1.docker.io
-#2 DONE 0.0s
-
-#3 [internal] load metadata for docker.io/library/python:3.11-slim
-#3 DONE 0.4s
-
-#4 [internal] load .dockerignore
-#4 transferring context: 2B done
-#4 DONE 0.0s
-
-#5 [internal] load build context
-#5 transferring context: 7.07MB 0.1s done
-#5 DONE 0.1s
-
-#6 [builder 1/
+<pre><code>-
 </code></pre>
-<ul>
-<li>Qué falta: Corregir Docker build</li>
-</ul>
 <h3>IE4 - Pipeline GitHub Actions</h3>
 <ul>
 <li><p>Estado: ✅ IMPLEMENTADO</p>
@@ -446,18 +425,81 @@ Keywords:
 </code></pre>
 <h3>IE5 - Docker Compose/K8s</h3>
 <ul>
-<li><p>Estado: ⚠️ MEJORA PENDIENTE</p>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
 </li>
-<li><p>Detalle: No existe docker-compose</p>
+<li><p>Detalle: docker-compose encontrado</p>
 </li>
 <li><p>Evidencia:</p>
 </li>
 </ul>
 <pre><code>docker-compose.yml
 </code></pre>
+<h3>IE5 - Múltiples servicios</h3>
 <ul>
-<li>Qué falta: Agregar docker-compose</li>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: 2 servicios</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
 </ul>
+<pre><code>app, db
+</code></pre>
+<h3>IE5 - Healthchecks</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: Tiene healthchecks</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>docker-compose revisado
+</code></pre>
+<h3>IE5 - Volumes</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: Tiene volumes</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>docker-compose revisado
+</code></pre>
+<h3>IE5 - Networks</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: Tiene networks</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>docker-compose revisado
+</code></pre>
+<h3>IE3 - Limits CPU/MEM</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: Tiene limits</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>docker-compose revisado
+</code></pre>
+<h3>IE3 - Reservations CPU/MEM</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: Tiene reservations</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>docker-compose revisado
+</code></pre>
 <h3>IE4 - README documentado</h3>
 <ul>
 <li><p>Estado: ✅ IMPLEMENTADO</p>

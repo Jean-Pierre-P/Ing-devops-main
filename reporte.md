@@ -4,10 +4,6 @@
 
 Las siguientes mejoras ayudarán a incrementar la madurez DevOps del repositorio.
 
-### 🔴 Alta prioridad
-
-- Docker build funciona
-
 ### 🟠 Prioridad media
 
 - Coverage equivalente JaCoCo
@@ -16,41 +12,11 @@ Las siguientes mejoras ayudarán a incrementar la madurez DevOps del repositorio
 
 ## Roadmap sugerido para alcanzar el 100%
 
-1. Docker build funciona
-2. Coverage equivalente JaCoCo
-3. Docker Compose/K8s
+1. Coverage equivalente JaCoCo
 
 ---
 
 ## Cómo resolver los GAPs
-
-### Docker build funciona
-
-Impacto: El contenedor no puede construirse correctamente.
-
-#### Cómo resolver
-
-- Validar sintaxis Dockerfile
-- Ejecutar docker build localmente
-- Revisar COPY y CMD
-
-#### Ejemplo
-
-```
-
-FROM node:20-alpine
-
-WORKDIR /app
-
-COPY package*.json ./
-
-RUN npm install
-
-COPY . .
-
-CMD ["npm","start"]
-
-```
 
 ### Coverage equivalente JaCoCo
 
@@ -107,7 +73,7 @@ npm test -- --coverage
 | IE1 | Dockerfile existe | ✅ IMPLEMENTADO |
 | IE1 | Multi-stage build | ✅ IMPLEMENTADO |
 | IE1 | Imágenes optimizadas | ✅ IMPLEMENTADO |
-| IE1 | Docker build funciona | ⚠️ MEJORA PENDIENTE |
+| IE1 | Docker build funciona | ✅ IMPLEMENTADO |
 | IE4 | Pipeline GitHub Actions | ✅ IMPLEMENTADO |
 | IE2 | Pipeline ejecuta tests | ✅ IMPLEMENTADO |
 | IE3 | SonarCloud/Snyk | ✅ IMPLEMENTADO |
@@ -116,7 +82,13 @@ npm test -- --coverage
 | IE2 | Tecnología detectada | ✅ IMPLEMENTADO |
 | IE2 | Coverage equivalente JaCoCo | ⚠️ MEJORA PENDIENTE |
 | IE3 | Dependabot configurado | ✅ IMPLEMENTADO |
-| IE5 | Docker Compose/K8s | ⚠️ MEJORA PENDIENTE |
+| IE5 | Docker Compose/K8s | ✅ IMPLEMENTADO |
+| IE5 | Múltiples servicios | ✅ IMPLEMENTADO |
+| IE5 | Healthchecks | ✅ IMPLEMENTADO |
+| IE5 | Volumes | ✅ IMPLEMENTADO |
+| IE5 | Networks | ✅ IMPLEMENTADO |
+| IE3 | Limits CPU/MEM | ✅ IMPLEMENTADO |
+| IE3 | Reservations CPU/MEM | ✅ IMPLEMENTADO |
 | IE4 | README documentado | ✅ IMPLEMENTADO |
 
 
@@ -159,35 +131,13 @@ Dockerfile revisado
 
 ### IE1 - Docker build funciona
 
-- Estado: ⚠️ MEJORA PENDIENTE
-- Detalle: Docker build falló
+- Estado: ✅ IMPLEMENTADO
+- Detalle: Docker build exitoso
 
 - Evidencia:
 ```
-#0 building with "default" instance using docker driver
-
-#1 [internal] load build definition from Dockerfile
-#1 transferring dockerfile: 377B done
-#1 DONE 0.0s
-
-#2 [auth] library/python:pull token for registry-1.docker.io
-#2 DONE 0.0s
-
-#3 [internal] load metadata for docker.io/library/python:3.11-slim
-#3 DONE 0.4s
-
-#4 [internal] load .dockerignore
-#4 transferring context: 2B done
-#4 DONE 0.0s
-
-#5 [internal] load build context
-#5 transferring context: 7.07MB 0.1s done
-#5 DONE 0.1s
-
-#6 [builder 1/
+-
 ```
-
-- Qué falta: Corregir Docker build
 
 
 ### IE4 - Pipeline GitHub Actions
@@ -290,15 +240,79 @@ Keywords:
 
 ### IE5 - Docker Compose/K8s
 
-- Estado: ⚠️ MEJORA PENDIENTE
-- Detalle: No existe docker-compose
+- Estado: ✅ IMPLEMENTADO
+- Detalle: docker-compose encontrado
 
 - Evidencia:
 ```
 docker-compose.yml
 ```
 
-- Qué falta: Agregar docker-compose
+
+### IE5 - Múltiples servicios
+
+- Estado: ✅ IMPLEMENTADO
+- Detalle: 2 servicios
+
+- Evidencia:
+```
+app, db
+```
+
+
+### IE5 - Healthchecks
+
+- Estado: ✅ IMPLEMENTADO
+- Detalle: Tiene healthchecks
+
+- Evidencia:
+```
+docker-compose revisado
+```
+
+
+### IE5 - Volumes
+
+- Estado: ✅ IMPLEMENTADO
+- Detalle: Tiene volumes
+
+- Evidencia:
+```
+docker-compose revisado
+```
+
+
+### IE5 - Networks
+
+- Estado: ✅ IMPLEMENTADO
+- Detalle: Tiene networks
+
+- Evidencia:
+```
+docker-compose revisado
+```
+
+
+### IE3 - Limits CPU/MEM
+
+- Estado: ✅ IMPLEMENTADO
+- Detalle: Tiene limits
+
+- Evidencia:
+```
+docker-compose revisado
+```
+
+
+### IE3 - Reservations CPU/MEM
+
+- Estado: ✅ IMPLEMENTADO
+- Detalle: Tiene reservations
+
+- Evidencia:
+```
+docker-compose revisado
+```
 
 
 ### IE4 - README documentado
